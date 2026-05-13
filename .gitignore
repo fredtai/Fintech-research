@@ -1,0 +1,9 @@
+.DS_Store
+*.pyc
+__pycache__/
+.env
+.env.local
+node_modules/
+
+# Local-only: skill runs, evaluation outputs, planning artifacts
+local/
