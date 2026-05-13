@@ -2,7 +2,9 @@
 
 **English** | [日本語](README.ja.md) | [简体中文](README.zh-CN.md)
 
-**A self-contained repo that turns your Claude Code into an equity-research agent. Unlocks Anthropic's official equity-research skills for every investor — no $150K institutional data stack required, and the jargon dials to your fluency, not just the pros.**
+**A self-contained repo that turns your Claude Code into an equity-research agent. Unlocks Anthropic's official equity-research skills for every investor — a single data MCP that replaces a $150K-per-year institutional data stack, and a personalization layer that caters to sell-side analysts, portfolio managers, retail investors, and academic economists alike.**
+
+<br>
 
 ![/discover running the humanoid-robotics supply-chain skill — parallel agents map upstream picks-and-shovels across US and JP tickers](assets/screenshots/cc-equity.png)
 
@@ -84,7 +86,7 @@ Each skill is a short markdown file — read one to see exactly what it does.
 
 ---
 
-## Data — the `drillr` MCP
+## Data — the [`drillr`](https://drillr.ai) MCP
 
 One MCP backs every skill. Six data domains:
 
@@ -119,3 +121,12 @@ See `CONTRIBUTING.md` for the skill template, what good skills look like, and re
 ## License
 
 The toolkit (community skills, scaffolding, dispatchers, documentation) is licensed under Apache 2.0 — see the top-level `LICENSE` file. The vendored Anthropic equity-research bundle is also Apache 2.0; see `anthropic-equity-research-skills/NOTICE.md` for attribution and the upstream-sync command.
+
+---
+
+## About
+
+Used in this project:
+
+- **[anthropics/financial-services](https://github.com/anthropics/financial-services)** — Anthropic's open-source equity-research skill bundle, vendored at `anthropic-equity-research-skills/` (Apache 2.0)
+- **[Drillr](https://drillr.ai)** — the single data MCP backing every skill (fundamentals, SEC filings, company ontology, alt-data, macro / market signals)
