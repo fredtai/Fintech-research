@@ -55,9 +55,9 @@ claude
 | `/monitor` | 持仓跟踪 | watchlist、thesis check、事件雷达；外加 Anthropic 的 `thesis-tracker`、`catalyst-calendar`、`morning-note` |
 | `/macro` | 宏观研究 | 收益率曲线、贸易流向、劳动力市场 |
 
-**自然语言同样可用。** *"对阿里巴巴 ADR 跑一遍 forensics"*、*"PLTR 接下来 6 周有哪些催化"*、*"美国劳动力市场在转弱吗"*——Claude 通过 `CLAUDE.md` 的意图映射直接路由到对应 skill。斜杠命令是发现层，自然语言是高阶用户层，底下是同一套 skill。
+**自然语言同样可用。** *"对拼多多 ADR 跑一遍 forensics"*、*"PLTR 接下来 6 周有哪些催化"*、*"美国劳动力市场在转弱吗"*——Claude 通过 `CLAUDE.md` 的意图映射直接路由到对应 skill。斜杠命令是发现层，自然语言是高阶用户层，底下是同一套 skill。
 
-例子：`/analyze BABA forensics` → 对阿里巴巴跑财务取证。`/macro` → 打开宏观菜单。`/discover AI 基建里什么在跑赢` → 路由到 `themes`。
+例子：`/analyze PDD forensics` → 对拼多多跑财务取证。`/macro` → 打开宏观菜单。`/discover AI 基建里什么在跑赢` → 路由到 `themes`。
 
 **无论 skill 数量增加到多少，斜杠命令始终保持四个**——新 skill 是加在 dispatcher 内部，而不是变成新命令。
 
