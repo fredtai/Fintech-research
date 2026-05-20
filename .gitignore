@@ -4,6 +4,13 @@ __pycache__/
 .env
 .env.local
 node_modules/
-
-# Local-only: skill runs, evaluation outputs, planning artifacts
 local/
+
+# MCP server cache and logs
+mcp-server/cache.db
+mcp-server/*.log
+mcp-server/__pycache__/
+
+# Virtual environments
+venv/
+.venv/
