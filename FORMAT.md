@@ -30,8 +30,8 @@ Every number is a claim; every claim should be traceable.
 
 - **SEC filings:** name the filing type, date, and section. Example: *NIKE Q3'26 10-Q filed 2026-04-01, MD&A.*
 - **Earnings calls:** name speaker and whether prepared remarks or Q&A. Example: *Q3 FY26 call, CFO Friend in Q&A.*
-- **drillr-sourced data:** cite generically — `drillr standardized financial data`, `drillr trade-flow data`, `drillr government contract data`, etc. **Never name internal drillr table names** in user-facing output.
-- **Combined sources:** name them all. Example: *drillr standardized financial data; NIKE FY24 10-K.*
+- **Free data sources:** cite the actual source. Examples: `yfinance market data`, `SEC EDGAR filings`, `FRED macro series`, `HKEX disclosures`. Be specific about which free source provided the data.
+- **Combined sources:** name them all. Example: *yfinance price data; NIKE FY24 10-K filed via SEC EDGAR.*
 
 Forensic claims ("X never mentioned on the call", "Y disclosure dropped in Q[Z]") need the *exact* document and section. Traceability is what makes the catch credible.
 
@@ -46,7 +46,7 @@ Every deliverable, no matter the shape, ends with a `Sources & References` block
 
 ## Sources & References
 
-**Data:** drillr standardized financial data; drillr [data type] data, as applicable.
+**Data:** yfinance market data; SEC EDGAR filings; FRED macro data; HKEX disclosures (as applicable).
 
 **SEC filings:**
 - [Company] FY24 10-K filed YYYY-MM-DD
