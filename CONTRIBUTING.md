@@ -8,10 +8,10 @@ Skills are markdown files. Adding a new one means writing a short, opinionated e
 
 ```
 community-skills/
-├── discover/         — Idea generation
-├── analyze/          — Company analysis
-├── monitor/          — Position tracking
-└── economic-research/— Macro & economic research
+├── probe/         — Idea generation (thematic, supply-chain, alt-plays)
+├── dive/          — Company deep analysis (business model, forensics, earnings)
+├── track/         — Position tracking (watchlist, thesis check, event radar)
+└── landscape/     — Macro & economic research (yield curve, trade flows, labor)
 ```
 
 Pick the folder that matches what your skill helps with. If none fit, propose a new folder in your PR description.
@@ -24,7 +24,7 @@ Skills are intent-routed through the project's `CLAUDE.md` — there's no slash 
 
 **Skill card (`<topic>.md`)** — Short. Teaches a lens. Why it matters, what it reveals that standard analysis misses, how to invoke it. About 200-400 words. Ends with a "What you can ask" list of example user questions.
 
-**Deep workflow (`<topic>-workflow.md`)** — Optional companion to a skill card. Contains the formalized procedure: which drillr tables to query, which SEC filings to search, the scoring rubric, the output format. Used when the user wants the full systematic version.
+**Deep workflow (`<topic>-workflow.md`)** — Optional companion to a skill card. Contains the formalized procedure: which MCP tools to call (e.g., `get_ticker_info`, `get_price_history`, `get_hkex_disclosures`), which SEC filings to search, the scoring rubric, the output format. Used when the user wants the full systematic version.
 
 Most contributions are skill cards. Add a workflow only when there's a specific procedure worth formalizing.
 
@@ -59,7 +59,7 @@ Most contributions are skill cards. Add a workflow only when there's a specific 
 
 ## Step 1 — [Stage name]
 
-[Description of what to do, with concrete SQL templates or specific drillr tool calls.]
+[Description of what to do, with concrete MCP tool calls like `get_ticker_info("0700.HK")`, `get_price_history("AAPL", period="1y")`, or `run_sql` queries against the local cache.]
 
 ```sql
 SELECT ...
@@ -90,7 +90,7 @@ WHERE ticker = '<TICKER>'
 ## What to avoid
 
 - Don't restate what the data shows. Skills teach the lens, not the answer.
-- Don't write tutorials about drillr or Claude Code itself.
+- Don't write tutorials about MCP server internals or Claude Code itself.
 - Don't add procedural ceremony. If the skill can be expressed as one paragraph, write one paragraph.
 - Don't include SQL in skill cards (only in `-workflow.md` files).
 
