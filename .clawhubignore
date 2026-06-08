@@ -1,0 +1,32 @@
+# Files to exclude from ClawHub publish
+
+# Git
+.git/
+.gitignore
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# MCP server cache
+mcp-server/cache.db
+mcp-server/*.log
+
+# Virtual environments
+venv/
+.venv/
+
+# Development/CI
+.github/
+
+# Assets (large files)
+assets/screenshots/
+
+# Documentation summaries (not needed in skill bundle)
+TASK_*.md
+GIT_SYNC_GUIDE.md
+TOKEN_BENCHMARK.md
+DELIVERY_REPORT.md
+CHANGELOG.md
+UPDATE_GUIDE.md
