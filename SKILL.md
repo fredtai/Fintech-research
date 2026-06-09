@@ -1,21 +1,26 @@
 ---
 name: fintech-research
 description: >
-  100% free, self-hosted equity research toolkit for Claude Code with native
-  Hong Kong stock support. Provides 24 analysis skills across 4 command families
-  (/probe, /dive, /track, /landscape) backed by a local MCP server connecting to
-  yfinance, HKEX, FRED, NewsAPI, and RSS — all free, zero subscription required.
-  Supports .HK tickers, AH spread analysis, and HKEX regulatory filings.
-version: 2.0.1
+  100% free, self-hosted equity research toolkit for Claude Code with global
+  market support (US, HK, CN). Provides 24 analysis skills across 4 command
+  families (/probe, /dive, /track, /landscape) backed by a local MCP server
+  connecting to yfinance (global quotes), SEC EDGAR (US filings), HKEX News
+  (HK announcements), FRED (US macro), NewsAPI and RSS (global news) — all
+  free, zero subscription required.
+version: 2.0.2
 license: Apache-2.0
 metadata:
   openclaw:
     tags:
       - fintech
       - equity-research
+      - us-stocks
       - hong-kong-stocks
-      - hkex
+      - a-shares
       - yfinance
+      - sec-edgar
+      - hkex
+      - fred
       - free-data
       - claude-code
       - mcp
@@ -33,27 +38,27 @@ metadata:
         command: "claude --version"
     env:
       - name: FRED_API_KEY
-        description: "Optional. Free API key from fred.stlouisfed.org for macro data"
+        description: "Optional. Free API key from fred.stlouisfed.org for US macro data"
         required: false
       - name: NEWS_API_KEY
-        description: "Optional. Free API key from newsapi.org for news signals"
+        description: "Optional. Free API key from newsapi.org for global news signals"
         required: false
 ---
 
 # Fintech Research Toolkit
 
-Transform Claude Code into a professional equity research agent with **native Hong Kong stock support** — all 100% free and self-hosted.
+Transform Claude Code into a professional equity research agent for **global equity markets** — all 100% free and self-hosted.
 
 ## What This Skill Provides
 
 ### 4 Command Families
 
-| Command | Purpose | Trigger Keywords |
-|---------|---------|-----------------|
-| `/probe` | Thematic discovery, supply-chain scanning, alt-plays | "screen", "find ideas", "theme", "discover" |
-| `/dive` | Single-company deep analysis | "analyze", "deep dive", "business model", "forensics" |
-| `/track` | Position tracking, thesis validation, event radar | "monitor", "watchlist", "track", "thesis check" |
-| `/landscape` | Macro research across CN-HK-US | "macro", "yield curve", "trade flows", "rates" |
+| Command | Purpose | Example |
+|---------|---------|---------|
+| `/probe` | Thematic discovery, supply-chain scanning, alt-plays | "Screen US semiconductor stocks" or "Find HK EV supply chain" |
+| `/dive` | Single-company deep analysis | "Dive into AAPL" or "Analyze 0700.HK business model" |
+| `/track` | Position tracking, thesis validation, event radar | "Track NVDA position" or "Monitor my HK portfolio" |
+| `/landscape` | Macro research across CN-HK-US | "Compare US vs HK tech valuations" |
 
 ### 24 Analysis Skills
 
@@ -62,61 +67,69 @@ Transform Claude Code into a professional equity research agent with **native Ho
 
 ### Free Data MCP Server
 
-A local MCP server (`mcp-server/server.py`) providing 10 tools:
+A local MCP server (`mcp-server/server.py`) providing 10 tools across three markets:
 
+**US Equities:**
 | Tool | Data Source | Free Basis |
 |------|-------------|------------|
 | `get_ticker_info` | yfinance | Open source |
 | `get_price_history` | yfinance | Open source |
 | `batch_ticker_info` | yfinance | Open source |
-| `get_ah_spread` | yfinance | Open source |
-| `get_hkex_disclosures` | HKEX News | Public access |
 | `get_sec_filings` | SEC EDGAR | Official free API |
 | `get_macro_data` | FRED | Official free API |
+
+**Hong Kong Equities:**
+| Tool | Data Source | Free Basis |
+|------|-------------|------------|
+| `get_ticker_info` | yfinance | Open source |
+| `get_hkex_disclosures` | HKEX News | Public access |
+| `get_ah_spread` | yfinance | Open source |
+
+**Global / All Markets:**
+| Tool | Data Source | Free Basis |
+|------|-------------|------------|
 | `get_news_signals` | NewsAPI + RSS | Free tier |
 | `fiscal_calendar` | Local JSON | Self-maintained |
 | `run_sql` | SQLite cache | Local |
 
-## HK Equity Support
+## Market Coverage
 
-- **65 pre-configured .HK tickers** covering Hang Seng Top 50 + tech leaders
-- Tencent (0700.HK), Alibaba (9988.HK), Meituan (3690.HK), Xiaomi (1810.HK), BYD (1211.HK), Kuaishou (1024.HK), Li Auto (2015.HK), and more
-- AH spread analysis (A-share vs H-share premium/discount)
-- HKEX regulatory announcements scraping
-- Stock Connect flow context
+### US Equities
+- **yfinance**: Quotes, fundamentals, history for all US tickers (AAPL, MSFT, GOOGL, NVDA, TSLA, META, etc.)
+- **SEC EDGAR**: Official filings (10-K, 10-Q, 8-K)
+- **FRED**: Treasury yields, Fed Funds, CPI, unemployment, DXY
+- **NewsAPI**: US market news with sentiment
+
+### Hong Kong Equities
+- **yfinance**: Quotes, fundamentals, history for all `.HK` tickers
+- **HKEX News**: Regulatory announcements scraping
+- **65 Pre-configured tickers**: Hang Seng Top 50 + tech leaders
+- **AH Spread**: A-share vs H-share premium/discount
+- **Stock Connect**: Northbound/southbound flow
+
+### A-Share Equities (via Connect)
+- **AH Spread**: Cross-market price comparison
+- **yfinance**: Limited coverage via `.SS` / `.SZ`
 
 ## Setup
 
 ```bash
-# 1. Clone and install dependencies
 git clone https://github.com/fredtai/Fintech-research.git
 cd Fintech-research
 pip install -r requirements.txt
-
-# 2. Start Claude Code
 claude
-
-# 3. Verify MCP server is connected
-/mcp
-
-# 4. Start researching
-/probe AI infrastructure in HK
-/dive 0700.HK
-/track 0700.HK
-/landscape CN-HK-US rates
+# /mcp to verify → then /probe, /dive, /track, /landscape
 ```
 
-## Optional API Keys
+## Optional API Keys (enhanced features, not required)
 
-The toolkit works **without any API keys** for all core features. Optional keys for enhanced data:
+- `FRED_API_KEY` — fred.stlouisfed.org (free) for US macro data
+- `NEWS_API_KEY` — newsapi.org (free, 100 req/day) for global news
 
-- `FRED_API_KEY` — Get a free key at [fred.stlouisfed.org](https://fred.stlouisfed.org/docs/api/api_key.html) for macro data
-- `NEWS_API_KEY` — Get a free key at [newsapi.org](https://newsapi.org/register) for news signals (100 req/day)
+## Personalization
 
-## Customization
-
-- **`.claude/mode.md`** — `new` or `experienced`
-- **`.claude/style.md`** — Control depth (quick/balanced/deep), tone (professional/conversational), coverage (global/hk-only/us-only)
+- `.claude/mode.md` — `new` or `experienced`
+- `.claude/style.md` — depth(quick/balanced/deep), tone(professional/conversational), coverage(global/us-only/hk-only)
 
 ## License
 
