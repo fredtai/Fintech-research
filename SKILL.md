@@ -6,7 +6,7 @@ description: >
   (/probe, /dive, /track, /landscape) backed by a local MCP server connecting to
   yfinance, HKEX, FRED, NewsAPI, and RSS — all free, zero subscription required.
   Supports .HK tickers, AH spread analysis, and HKEX regulatory filings.
-version: 2.0.0
+version: 2.0.1
 license: Apache-2.0
 metadata:
   openclaw:
