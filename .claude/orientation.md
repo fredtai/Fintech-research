@@ -26,8 +26,8 @@ Free access to multi-market financial data:
 
 | Market | Coverage | Data Source | Example Tickers |
 |--------|----------|-------------|-----------------|
-| Hong Kong | Full | HKEX News Portal + yfinance | 0700.HK, 9988.HK, 3690.HK |
-| US Equities | Full | yfinance + SEC EDGAR | AAPL, TSLA, NVDA |
+| US Equities | Full | yfinance + SEC EDGAR + FRED | AAPL, TSLA, NVDA, MSFT, GOOGL |
+| Hong Kong | Full | HKEX News Portal + yfinance | 0700.HK, 9988.HK, 3690.HK, 1810.HK |
 | A-shares | Via AH cross-listing | yfinance dual-listing | 600519 (茅台), 000858 (五粮液) |
 
 ---
